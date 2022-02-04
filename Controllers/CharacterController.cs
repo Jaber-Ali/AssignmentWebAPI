@@ -14,7 +14,10 @@ using System.Threading.Tasks;
 
 namespace AssignmentWebAPI.Controllers
 {
-   
+    /// <summary>
+    /// Characters controller with characterServices.
+    /// </summary>
+
     [Route("api/v1/Characters")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
@@ -30,7 +33,10 @@ namespace AssignmentWebAPI.Controllers
             _characterService = characterService;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// Reads all Characters
+        /// </summary>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CharacterReadDTO>>> GetCharacters()
@@ -38,7 +44,10 @@ namespace AssignmentWebAPI.Controllers
             var characterData = _mapper.Map<IEnumerable<CharacterReadDTO>>(await _characterService.GetAllCharactersAsync());
             return Ok(characterData);
         }
-
+        /// <summary>
+        /// Reads Character by given id
+        /// </summary>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
@@ -52,7 +61,11 @@ namespace AssignmentWebAPI.Controllers
             var data =_mapper.Map<CharacterReadDTO>(character);
             return Ok(data);
         }
-
+        /// <summary>
+        /// Adds character
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
@@ -67,7 +80,12 @@ namespace AssignmentWebAPI.Controllers
             _mapper.Map<CharacterReadDTO>(domainCharacter));
 
         }
-
+        /// <summary>
+        /// Updates character
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="character"></param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -89,7 +107,11 @@ namespace AssignmentWebAPI.Controllers
 
             return NoContent();
         }
-
+        /// <summary>
+        /// Delete Character
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

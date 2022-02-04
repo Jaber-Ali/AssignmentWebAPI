@@ -6,6 +6,10 @@ namespace AssignmentWebAPI.Models.DummyData
 {
     public static class SeedData
     {
+        /// <summary>
+        /// Seeding DB, Character Table
+        /// </summary>
+        /// <returns>characters</returns>
         public static IEnumerable<Character> SeedCharacters()
         {
             List<Character> characters = new List<Character>();
@@ -62,7 +66,10 @@ namespace AssignmentWebAPI.Models.DummyData
             });
             return characters;
         }
-
+        /// <summary>
+        /// Seeding DB, Movie Table
+        /// </summary>
+        /// <returns>Movies</returns>
         public static IEnumerable<Movie> SeedMovies()
         {
             List<Movie> movies = new List<Movie>();
@@ -168,6 +175,10 @@ namespace AssignmentWebAPI.Models.DummyData
             return movies;
 
         }
+        /// <summary>
+        ///  Seeding DB, Franchise Table
+        /// </summary>
+        /// <returns>Franchises</returns>
         public static IEnumerable<Franchise> SeedFranchise()
         {
             List<Franchise> franchises = new List<Franchise>();

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AssignmentWebAPI.ServiceRepositories
 {
+    /// <summary>
+    /// repo service pattren
+    /// </summary>
     public interface IFranchiseService 
     {
         Task<IEnumerable<Character>> GetAllCharactersInFranchiseAsync(int id);

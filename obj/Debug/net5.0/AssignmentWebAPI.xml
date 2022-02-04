@@ -4,5 +4,355 @@
         <name>AssignmentWebAPI</name>
     </assembly>
     <members>
+        <member name="T:AssignmentWebAPI.Controllers.CharacterController">
+            <summary>
+            Characters controller with characterServices.
+            </summary>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.CharacterController.GetCharacters">
+            <summary>
+            Reads all Characters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.CharacterController.GetCharacter(System.Int32)">
+            <summary>
+            Reads Character by given id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.CharacterController.PostCharacter(AssignmentWebAPI.Models.DTO.Character.CharacterCreateDTO)">
+            <summary>
+            Adds character
+            </summary>
+            <param name="character"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.CharacterController.PutCharacter(System.Int32,AssignmentWebAPI.Models.DTO.Character.CharacterEditDTO)">
+            <summary>
+            Updats character
+            </summary>
+            <param name="id"></param>
+            <param name="character"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.CharacterController.DeleteCharacter(System.Int32)">
+            <summary>
+            Delete Character
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.GetAllFranchises">
+            <summary>
+            Reads all franchises
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.GetFranchiseById(System.Int32)">
+            <summary>
+            Reads franchise by given id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.GetAllCharactersInFranchise(System.Int32)">
+            <summary>
+            Reads all characters in franchise by given Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.GetAllMoviesInFranchise(System.Int32)">
+            <summary>
+            Read all movies in franchise by given Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.PostFranchise(AssignmentWebAPI.Models.DTO.Franchise.FranchiseCreateDTO)">
+            <summary>
+            Adds franchise to db
+            </summary>
+            <param name="franchise"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.PutFranchise(System.Int32,AssignmentWebAPI.Models.DTO.Franchise.FranchiseEditDTO)">
+            <summary>
+            Updates franchise 
+            </summary>
+            <param name="id"></param>
+            <param name="franchise"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.UpdateMoviesInFranchise(System.Int32,System.Int32)">
+            <summary>
+            Updates movies in franchise by taking 2 integers
+            </summary>
+            <param name="movieId">movieId</param>
+            <param name="franchiseId">franchiseId</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.DeleteMovieFromFranchise(System.Int32,System.Int32)">
+            <summary>
+            Deletes movie from franchise
+            </summary>
+            <param name="movieId">movieId</param>
+            <param name="franchiseId">franchiseId</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.DeleteFranchise(System.Int32)">
+            <summary>
+            Deletes franchise by given id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.FranchiseController.GetMovieById(System.Int32)">
+            <summary>
+            This is a read movie by given id that has been used in this class
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.MovieController.GetAllMovies">
+            <summary>
+            Reads all movies
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.MovieController.GetMovieById(System.Int32)">
+            <summary>
+            Reads moive by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.MovieController.PostMovie(AssignmentWebAPI.Models.DTO.Movie.MovieCreateDTO)">
+            <summary>
+            Adds moive
+            </summary>
+            <param name="movie"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.MovieController.PutMovie(System.Int32,AssignmentWebAPI.Models.DTO.Movie.MovieEditDTO)">
+            <summary>
+            Update moive
+            </summary>
+            <param name="id"></param>
+            <param name="movie"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.MovieController.GetCharactersInMovie(System.Int32)">
+            <summary>
+            Reads characters in a movie
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.MovieController.UpdateCharacterInMovie(System.Int32,System.Int32)">
+            <summary>
+            Updates character in movie by taking two integers
+            </summary>
+            <param name="movieId">movieId</param>
+            <param name="characterId">characterId</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.MovieController.DeleteCharacterFromMovie(System.Int32,System.Int32)">
+            <summary>
+            Deletes character from movie by taking two integers
+            </summary>
+            <param name="movieId">movieId</param>
+            <param name="characterId">characterId</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Controllers.MovieController.DeleteMovie(System.Int32)">
+            <summary>
+            Deletes movies from db
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Models.DummyData.SeedData.SeedCharacters">
+            <summary>
+            Seeding DB, Character Table
+            </summary>
+            <returns>characters</returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Models.DummyData.SeedData.SeedMovies">
+            <summary>
+            Seeding DB, Movie Table
+            </summary>
+            <returns>Movies</returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Models.DummyData.SeedData.SeedFranchise">
+            <summary>
+             Seeding DB, Franchise Table
+            </summary>
+            <returns>Franchises</returns>
+        </member>
+        <member name="T:AssignmentWebAPI.ServiceRepositories.ICharacterService">
+            <summary>
+            repo service pattren
+            </summary>
+        </member>
+        <member name="T:AssignmentWebAPI.ServiceRepositories.IFranchiseService">
+            <summary>
+            repo service pattren
+            </summary>
+        </member>
+        <member name="T:AssignmentWebAPI.ServiceRepositories.IMovieService">
+            <summary>
+            repo service pattren
+            </summary>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.CharacterService.GetAllCharactersAsync">
+            <summary>
+            Reads All Characters from db
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.CharacterService.GetSpecificCharacterAsync(System.Int32)">
+            <summary>
+            Reads Character by id from db
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.CharacterService.AddCharacterAsync(AssignmentWebAPI.Models.Domain.Character)">
+            <summary>
+            Adds character to db
+            </summary>
+            <param name="character">character</param>
+            <returns>returns added character</returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.CharacterService.UpdateCharacterAsync(AssignmentWebAPI.Models.Domain.Character)">
+            <summary>
+            this update character and save changes
+            </summary>
+            <param name="character">character to be updated</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.CharacterService.DeleteCharacterAsync(System.Int32)">
+            <summary>
+            deletes character from db
+            </summary>
+            <param name="id">character id</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.CharacterService.CharacterExists(System.Int32)">
+            <summary>
+            validation if CharacterExists in db
+            </summary>
+            <param name="id">character id</param>
+            <returns>return true if CharacterExists </returns>
+        </member>
+        <member name="F:AssignmentWebAPI.Services.FranchiseService._context">
+            <summary>
+            all data linked to MovieCharacterDbContext
+            </summary>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.FranchiseService.GetAllFranchisesAsync">
+            <summary>
+            Reads All Francises from franchis db
+            </summary>
+            <returns>franchise</returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.FranchiseService.GetSpecificFranchiseAsync(System.Int32)">
+            <summary>
+            Reads franchise by id
+            </summary>
+            <param name="id">franchise id</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.FranchiseService.UpdateFranchiseAsync(AssignmentWebAPI.Models.Domain.Franchise)">
+            <summary>
+            updates francise
+            </summary>
+            <param name="franchise">francise</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.FranchiseService.AddFranchiseAsync(AssignmentWebAPI.Models.Domain.Franchise)">
+            <summary>
+            adds Franchise to db
+            </summary>
+            <param name="franchise"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.FranchiseService.DeleteFranchiseAsync(System.Int32)">
+            <summary>
+            delete franchise
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.FranchiseService.FranchiseExists(System.Int32)">
+            <summary>
+            validation for farnchise if exist
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.FranchiseService.GetAllCharactersInFranchiseAsync(System.Int32)">
+            <summary>
+            this returns all the characters in franchises
+            </summary>
+            <param name="id">franchise id</param>
+            <returns>list of characters</returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.FranchiseService.GetAllMoviesInFranchiseAsync(System.Int32)">
+            <summary>
+            this returns all the moives in franchises
+            </summary>
+            <param name="id">franchise id</param>
+            <returns>List of movies</returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.MovieService.GetAllMoviesAsync">
+            <summary>
+            Redas All movies from db
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.MovieService.GetSpecificMovieAsync(System.Int32)">
+            <summary>
+            Reads movie by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.MovieService.GetCharacterInMovieAsync(System.Int32)">
+            <summary>
+            this returns characters in a movie
+            </summary>
+            <param name="id">movie id</param>
+            <returns>list of movies</returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.MovieService.AddMovieAsync(AssignmentWebAPI.Models.Domain.Movie)">
+            <summary>
+            adds movie to db
+            </summary>
+            <param name="movie"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.MovieService.UpdateMovieAsync(AssignmentWebAPI.Models.Domain.Movie)">
+            <summary>
+            updates movie
+            </summary>
+            <param name="movie"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.MovieService.DeleteMovieAsync(System.Int32)">
+            <summary>
+            delets movie
+            </summary>
+            <param name="id">moive id</param>
+            <returns></returns>
+        </member>
+        <member name="M:AssignmentWebAPI.Services.MovieService.MovieExists(System.Int32)">
+            <summary>
+            validation if moive exist
+            </summary>
+            <param name="id">moive id</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

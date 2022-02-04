@@ -21,7 +21,7 @@ namespace AssignmentWebAPI.Models.Domain
         [MaxLength(255)]
         public string Trailer { get; set; }
 
-        //FKey
+        //F_Key
         //Relationships
         public int? FranchiseId { get; set; }
 

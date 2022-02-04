@@ -35,18 +35,25 @@ namespace AssignmentWebAPI.Controllers
             _mapper = mapper;
 
         }
+        /// <summary>
+        /// Reads all movies
+        /// </summary>
+        /// <returns></returns>
 
         // GET: api/Movie
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
-      
         public async Task<ActionResult<IEnumerable<MovieReadDTO>>> GetAllMovies()
         {
             var movieData = _mapper.Map<IEnumerable<MovieReadDTO>>(
                 await _movieService.GetAllMoviesAsync());
             return Ok(movieData);
         }
-
+        /// <summary>
+        /// Reads moive by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: api/Movie/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -62,7 +69,11 @@ namespace AssignmentWebAPI.Controllers
             var movieData = _mapper.Map<MovieReadDTO>(movie);
             return Ok(movieData);
         }
-
+        /// <summary>
+        /// Adds moive
+        /// </summary>
+        /// <param name="movie"></param>
+        /// <returns></returns>
         // POST: api/Movie
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -78,7 +89,12 @@ namespace AssignmentWebAPI.Controllers
                     _mapper.Map<MovieCreateDTO>(domainMovie));
 
         }
-
+        /// <summary>
+        /// Update moive
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="movie"></param>
+        /// <returns></returns>
         // PUT: api/Movie/5
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -99,6 +115,11 @@ namespace AssignmentWebAPI.Controllers
             return NoContent();
 
         }
+        /// <summary>
+        /// Reads characters in a movie
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}/characters")]
@@ -113,6 +134,12 @@ namespace AssignmentWebAPI.Controllers
             return Ok(data);
           
         }
+        /// <summary>
+        /// Updates character in movie by taking two integers
+        /// </summary>
+        /// <param name="movieId">movieId</param>
+        /// <param name="characterId">characterId</param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -145,6 +172,12 @@ namespace AssignmentWebAPI.Controllers
             var data = _mapper.Map<IEnumerable<CharacterReadDTO>>(characters);
             return Ok(data);
         }
+        /// <summary>
+        /// Deletes character from movie by taking two integers
+        /// </summary>
+        /// <param name="movieId">movieId</param>
+        /// <param name="characterId">characterId</param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -178,7 +211,11 @@ namespace AssignmentWebAPI.Controllers
             var data = _mapper.Map<IEnumerable<CharacterReadDTO>>(characters);
             return Ok(data);
         }
-
+        /// <summary>
+        /// Deletes movies from db
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE: api/Movie/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

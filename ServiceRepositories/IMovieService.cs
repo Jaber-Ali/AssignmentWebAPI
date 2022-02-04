@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AssignmentWebAPI.ServiceRepositories
 {
+    /// <summary>
+    /// repo service pattren
+    /// </summary>
     public interface IMovieService 
     {
         public Task<IEnumerable<Character>> GetCharacterInMovieAsync(int id);

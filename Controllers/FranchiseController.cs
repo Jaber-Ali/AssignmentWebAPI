@@ -16,7 +16,7 @@ using System.Net.Mime;
 
 namespace AssignmentWebAPI.Controllers
 {
-    [Route("api/v1/Franchise")]
+    [Route("api/v1/Franchises")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Produces(MediaTypeNames.Application.Json)]
@@ -33,7 +33,10 @@ namespace AssignmentWebAPI.Controllers
             _movieService = movieService;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// Reads all franchises
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Franchise
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
@@ -42,7 +45,13 @@ namespace AssignmentWebAPI.Controllers
             return _mapper.Map<List<FranchiseReadDTO>>(await _franchiseService.GetAllFranchisesAsync());
         
         }
-
+        /// <summary>
+        /// Reads franchise by given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         // GET: api/Franchise/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Franchise>> GetFranchiseById(int id)
@@ -56,8 +65,11 @@ namespace AssignmentWebAPI.Controllers
             var franciseData = _mapper.Map<FranchiseReadDTO>(franchise);
             return Ok(franciseData);
         }
-    
-
+        /// <summary>
+        /// Reads all characters in franchise by given Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}/characters")]
@@ -72,22 +84,34 @@ namespace AssignmentWebAPI.Controllers
             var data = _mapper.Map<IEnumerable<CharacterReadDTO>>(franchiseCharacter);
             return Ok(data);
         }
-
+        /// <summary>
+        /// Read all movies in franchise by given Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}/movies")]
         public async Task<ActionResult<IEnumerable<MovieReadDTO>>> GetAllMoviesInFranchise(int id)
         {
-            if (!_franchiseService.FranchiseExists(id)) return NotFound();
+            if (!_franchiseService.FranchiseExists(id))
+            {
+                return NotFound();
+            }
 
             var franchiseMovie = await _franchiseService.GetAllMoviesInFranchiseAsync(id);
 
             var data = _mapper.Map<IEnumerable<MovieReadDTO>>(franchiseMovie);
             return Ok(data);
         }
-
+        /// <summary>
+        /// Adds franchise to db
+        /// </summary>
+        /// <param name="franchise"></param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         // POST: api/Franchise
-
         [HttpPost]
         public async Task<ActionResult<Franchise>> PostFranchise(FranchiseCreateDTO franchise)
         {
@@ -98,7 +122,12 @@ namespace AssignmentWebAPI.Controllers
                   _mapper.Map<FranchiseReadDTO>(domainFranchise));
         }
 
-
+        /// <summary>
+        /// Updates franchise 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="franchise"></param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -121,6 +150,12 @@ namespace AssignmentWebAPI.Controllers
 
             return NoContent();
         }
+        /// <summary>
+        /// Updates movies in franchise by taking 2 integers
+        /// </summary>
+        /// <param name="movieId">movieId</param>
+        /// <param name="franchiseId">franchiseId</param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -147,7 +182,12 @@ namespace AssignmentWebAPI.Controllers
                    new { id = domainMovie.Id },
                     _mapper.Map<MovieReadDTO>(domainMovie));
         }
-
+        /// <summary>
+        /// Deletes movie from franchise
+        /// </summary>
+        /// <param name="movieId">movieId</param>
+        /// <param name="franchiseId">franchiseId</param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -175,6 +215,11 @@ namespace AssignmentWebAPI.Controllers
                    _mapper.Map<MovieReadDTO>(domainMovie));
            
         }
+        /// <summary>
+        /// Deletes franchise by given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -200,6 +245,11 @@ namespace AssignmentWebAPI.Controllers
 
             return NoContent();
         }
+        /// <summary>
+        /// This is a read movie by given id that has been used in this class
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ActionResult<MovieReadDTO>> GetMovieById(int id)
         {
             var movie = await _movieService.GetSpecificMovieAsync(id);
